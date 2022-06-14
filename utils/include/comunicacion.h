@@ -23,8 +23,8 @@ typedef enum
 {
 	PAQUETE,
     PAQUETE_CONSOLA,
-    MENSAJE,
-	PCB
+	PCB,
+	HANDSHAKE
     // TABLA_PAGINAS
 } op_code;
 
@@ -69,7 +69,6 @@ typedef struct {
     t_list* instrucciones;
 }pcb;
 
-
 t_log *logger;
 
 typedef struct
@@ -102,7 +101,7 @@ pcb *armar_pcb(t_buffer* buffer);
 pcb* recibir_pcb(int socket_cliente);
 void enviar_mensaje(char *mensaje, int socket_cliente);
 t_paquete *crear_paquete(void);
-t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t );
+t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t);
 void agregar_entero_a_paquete(t_paquete*, int );
 void agregar_datos_consola(t_paquete*,void *, int ,int );
 void enviar_paquete(t_paquete*, int);
@@ -113,7 +112,6 @@ void* serializar_paquete_con_bytes(t_paquete* , int );
 t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, uint32_t);
 void agregar_a_buffer(t_buffer *, void *, uint32_t);
-t_paquete *serializar_instrucciones(t_list *, op_code);
 t_buffer *buffer_vacio(void);
 
 #endif

@@ -14,7 +14,7 @@ t_log* logger;
 
 // FUNCIONES
 
-int crear_conexion( char* , char* );
+int crear_conexion(char* , char* );
 void liberar_conexion(int socket_cliente);
 int iniciar_servidor(char* , char* );
 int esperar_cliente(t_log*,const char*, int  );

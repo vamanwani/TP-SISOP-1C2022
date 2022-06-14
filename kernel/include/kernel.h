@@ -11,12 +11,12 @@
 #include "sockets.h"
 #include "planificacion.h"
 
-// PUERTOS
+//	Puertos
 
 #define IP_KERNEL "127.0.0.1"
 #define PUERTO_KERNEL "8000"
 
-//STRUCTS/ENUMS
+//	Structs/Enums
 
  typedef struct  // archivo de configuracion kernel
  {
@@ -50,19 +50,6 @@ typedef struct
 
 // FUNCIONES
 
-//void cargar_configuracion();
-//void manejar_conexion(t_buffer *  ,pcb* );
-//void manejo_recepcion(int );
-//void manejar_clientes(int ,int );
-//void destruir_semaforos(void);
-//void destruir_listas(void);
-//void inicializarListas(void);
-//void inicializarPlanificacion(void);
-//void inicializarSemaforos(void);
-t_list *deserializar_instrucciones(t_list *, uint32_t );
-t_consola *deserializar_consola(int );
-
-
-void iterator(char *value);
+void cargar_configuracion(char *);
 
 #endif 

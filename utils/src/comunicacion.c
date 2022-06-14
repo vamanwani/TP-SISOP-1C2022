@@ -22,35 +22,35 @@ int recibir_operacion(int socket_cliente) {
 
 // MENSAJE
 
-void enviar_mensaje(char *mensaje, int socket_cliente)
-{
-    t_paquete *paquete = malloc(sizeof(t_paquete));
-
-    paquete->codigo_operacion = MENSAJE;
-    paquete->buffer = malloc(sizeof(t_buffer));
-    paquete->buffer->stream_size = strlen(mensaje) + 1;
-    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
-    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->stream_size);
-
-    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
-
-    void *a_enviar = serializar_paquete_con_bytes(paquete,bytes);
-
-    for(int i = 0 ; i<bytes; i++){
-    	printf("%02x ",((char*) a_enviar)[i]);
-    }
-    send(socket_cliente, a_enviar, bytes, 0);
-
-    free(a_enviar);
-    eliminar_paquete(paquete);
-}
-
-void recibir_mensaje(int socket_cliente,t_log* logger) {
-    int size;
-    char* buffer = recibir_buffer(&size, socket_cliente);
-    log_info(logger, "Me llego el mensaje %s", buffer);
-    free(buffer);
-}
+//void enviar_mensaje(char *mensaje, int socket_cliente)
+//{
+//    t_paquete *paquete = malloc(sizeof(t_paquete));
+//
+//    paquete->codigo_operacion = MENSAJE;
+//    paquete->buffer = malloc(sizeof(t_buffer));
+//    paquete->buffer->stream_size = strlen(mensaje) + 1;
+//    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
+//    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->stream_size);
+//
+//    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
+//
+//    void *a_enviar = serializar_paquete_con_bytes(paquete,bytes);
+//
+//    for(int i = 0 ; i<bytes; i++){
+//    	printf("%02x ",((char*) a_enviar)[i]);
+//    }
+//    send(socket_cliente, a_enviar, bytes, 0);
+//
+//    free(a_enviar);
+//    eliminar_paquete(paquete);
+//}
+//
+//void recibir_mensaje(int socket_cliente,t_log* logger) {
+//    int size;
+//    char* buffer = recibir_buffer(&size, socket_cliente);
+//    log_info(logger, "Me llego el mensaje %s", buffer);
+//    free(buffer);
+//}
 
 
  // BUFFER
@@ -155,7 +155,7 @@ t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
 
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
-    agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
+	agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
@@ -189,7 +189,7 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente)
 {
     t_buffer *a_enviar = serializar_paquete(paquete);
     char* stream = (char*)(a_enviar->stream);
-    printf("enviar paquete \n");
+    printf("\nEnviar paquete.\n");
     for(int i=0 ; i<a_enviar->stream_size;i++){
     	printf("%02X ",stream[i]);
     }

@@ -1,0 +1,55 @@
+[INFO] 19:08:29:271 Kernel/(8296:8296): Kernel listo para recibir al cliente.
+
+[INFO] 19:09:36:147 Kernel/(8367:8367): Kernel listo para recibir al cliente.
+
+[INFO] 19:22:20:693 Kernel/(9140:9140): Kernel listo para recibir al cliente.
+
+[INFO] 19:22:31:072 Kernel/(9140:9140): Se conecto un cliente a kernel
+[INFO] 19:23:56:188 Kernel/(9140:9140): Hola consola.
+
+[WARNING] 19:24:13:515 Kernel/(9140:9140): Operacion desconocida.
+
+[ERROR] 19:24:15:854 Kernel/(9140:9140): Fallo la comunicacion.
+
+[INFO] 19:35:35:944 Kernel/(9082:9082): Kernel listo para recibir al cliente.
+
+[INFO] 19:35:41:186 Kernel/(9082:9082): Se conecto un cliente a kernel
+[INFO] 19:35:47:392 Kernel/(9082:9082): Hola consola.
+
+[WARNING] 19:36:05:174 Kernel/(9082:9082): Operacion desconocida.
+
+[WARNING] 19:36:08:535 Kernel/(9082:9082): Operacion desconocida.
+
+[ERROR] 19:36:12:605 Kernel/(9082:9082): Fallo la comunicacion.
+
+[INFO] 19:37:10:222 Kernel/(9614:9614): Kernel listo para recibir al cliente.
+
+[INFO] 19:37:44:535 Kernel/(9614:9614): Se conecto un cliente a kernel
+[INFO] 19:38:35:309 Kernel/(9842:9842): Kernel listo para recibir al cliente.
+
+[INFO] 19:38:39:421 Kernel/(9842:9842): Se conecto un cliente a kernel
+[INFO] 19:38:44:405 Kernel/(9842:9842): Hola consola.
+
+[WARNING] 19:39:04:113 Kernel/(9842:9842): Operacion desconocida.
+
+[WARNING] 19:39:18:061 Kernel/(9842:9842): Operacion desconocida.
+
+[ERROR] 19:39:27:280 Kernel/(9842:9842): Fallo la comunicacion.
+
+[INFO] 19:40:04:435 Kernel/(9971:9971): Kernel listo para recibir al cliente.
+
+[INFO] 19:40:08:150 Kernel/(9971:9971): Se conecto un cliente a kernel
+[INFO] 19:40:30:578 Kernel/(10019:10019): Kernel listo para recibir al cliente.
+
+[INFO] 19:40:59:420 Kernel/(10019:10019): Se conecto un cliente a kernel
+[INFO] 19:41:11:568 Kernel/(10019:10019): Hola consola.
+
+[INFO] 20:42:59:085 Kernel/(12801:12801): Kernel listo para recibir al cliente.
+
+[INFO] 20:43:05:612 Kernel/(12801:12801): Se conecto un cliente a kernel
+[WARNING] 20:43:16:081 Kernel/(12801:12801): Operacion desconocida.
+
+[INFO] 20:43:23:757 Kernel/(12801:12801): Se conecto un cliente a kernel
+[WARNING] 20:43:37:236 Kernel/(12801:12801): Operacion desconocida.
+
+[INFO] 20:43:43:799 Kernel/(12801:12801): Se conecto un cliente a kernel

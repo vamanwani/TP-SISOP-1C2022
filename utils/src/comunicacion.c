@@ -188,7 +188,7 @@ void agregar_datos_consola(t_paquete* paquete,void *valor, int tamanio_valor,int
 void enviar_paquete(t_paquete *paquete, int socket_cliente)
 {
     t_buffer *a_enviar = serializar_paquete(paquete);
-    char* stream = (char*)(a_enviar->stream);
+    unsigned char* stream = (unsigned char*)(a_enviar->stream);
     printf("\nEnviar paquete.\n");
     for(int i=0 ; i<a_enviar->stream_size;i++){
     	printf("%02X ",stream[i]);

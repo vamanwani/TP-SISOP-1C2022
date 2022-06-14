@@ -29,7 +29,7 @@ int main(int argc, char **argv){
 
 	t_paquete *paquete_instrucciones = crear_paquete_con_codigo_de_operacion(PAQUETE_CONSOLA);
 	serializar_instrucciones(instrucciones, paquete_instrucciones);
-	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
+//	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
 
 
 //	Conexion servidor
@@ -120,10 +120,14 @@ void serializar_instrucciones(t_list *instrucciones, t_paquete *paquete){
 
 	for(int i=0; i<list_size(instrucciones); i++) {
 		instruccion *instr = list_get(instrucciones, i);
-		agregar_a_paquete(paquete, &instr->codigo, sizeof(codigo_instrucciones));
-		agregar_a_paquete(paquete, &instr->parametro1, sizeof(uint32_t));
-		agregar_a_paquete(paquete, &instr->parametro2, sizeof(uint32_t));
+		agregar_a_paquete(paquete, &(instr->codigo), sizeof(codigo_instrucciones));
+		agregar_a_paquete(paquete, &(instr->parametro1), sizeof(uint32_t));
+		agregar_a_paquete(paquete, &(instr->parametro2), sizeof(uint32_t));
 	}
+	unsigned char *stream = (unsigned char *)paquete->buffer->stream; //Para debuggear
+    for(int i=0 ; i<paquete->buffer->stream_size;i++){
+    	printf("%02X ",stream[i]);
+    }
 
 }
 

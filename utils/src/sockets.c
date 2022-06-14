@@ -21,7 +21,7 @@ int crear_conexion(char *ip, char *puerto)
         printf("error");
     }
 
-    //freeaddrinfo(server_info);
+    freeaddrinfo(server_info);
 
     return socket_cliente;
 }

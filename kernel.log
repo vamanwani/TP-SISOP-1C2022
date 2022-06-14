@@ -1,0 +1,85 @@
+[INFO] 17:35:05:949 Kernel/(5147:5147): Kernel listo para recibir al cliente.
+
+[INFO] 17:35:17:222 Kernel/(5147:5147): Se conecto un cliente a kernel
+[WARNING] 17:35:17:288 Kernel/(5147:5147): Operacion desconocida.
+
+[INFO] 17:35:34:468 Kernel/(5147:5147): Se conecto un cliente a kernel
+[WARNING] 17:35:34:481 Kernel/(5147:5147): Operacion desconocida.
+
+[INFO] 17:37:33:344 Kernel/(5216:5216): Kernel listo para recibir al cliente.
+
+[INFO] 17:37:43:967 Kernel/(5216:5216): Se conecto un cliente a kernel
+[WARNING] 17:37:43:969 Kernel/(5216:5216): Operacion desconocida.
+
+[INFO] 17:38:08:173 Kernel/(5216:5216): Se conecto un cliente a kernel
+[WARNING] 17:38:08:189 Kernel/(5216:5216): Operacion desconocida.
+
+[INFO] 17:48:00:893 Kernel/(5596:5596): Kernel listo para recibir al cliente.
+
+[INFO] 17:48:18:848 Kernel/(5596:5596): Se conecto un cliente a kernel
+[WARNING] 17:48:18:861 Kernel/(5596:5596): Operacion desconocida.
+
+[INFO] 18:10:19:057 Kernel/(5596:5596): Se conecto un cliente a kernel
+[WARNING] 18:10:19:076 Kernel/(5596:5596): Operacion desconocida.
+
+[INFO] 18:11:18:962 Kernel/(5596:5596): Se conecto un cliente a kernel
+[WARNING] 18:11:18:965 Kernel/(5596:5596): Operacion desconocida.
+
+[INFO] 18:12:50:871 Kernel/(5596:5596): Se conecto un cliente a kernel
+[INFO] 18:12:50:881 Kernel/(5596:5596): Recibi un paquete de consola.
+
+[INFO] 18:13:41:811 Kernel/(5596:5596): Se conecto un cliente a kernel
+[WARNING] 18:13:41:819 Kernel/(5596:5596): Operacion desconocida.
+
+[INFO] 18:14:25:891 Kernel/(5596:5596): Se conecto un cliente a kernel
+[WARNING] 18:14:25:897 Kernel/(5596:5596): Operacion desconocida.
+
+[INFO] 18:15:01:390 Kernel/(6742:6742): Kernel listo para recibir al cliente.
+
+[INFO] 18:16:26:660 Kernel/(6742:6742): Se conecto un cliente a kernel
+[WARNING] 18:16:26:671 Kernel/(6742:6742): Operacion desconocida.
+
+[INFO] 19:06:05:656 Kernel/(7409:7409): Kernel listo para recibir al cliente.
+
+[INFO] 19:06:15:033 Kernel/(7409:7409): Se conecto un cliente a kernel
+[WARNING] 19:06:15:063 Kernel/(7409:7409): Operacion desconocida.
+
+[INFO] 19:07:44:502 Kernel/(7486:7486): Kernel listo para recibir al cliente.
+
+[INFO] 19:07:51:247 Kernel/(7486:7486): Se conecto un cliente a kernel
+[INFO] 19:07:51:249 Kernel/(7486:7486): Recibi un paquete de consola.
+
+[INFO] 19:10:21:048 Kernel/(7486:7486): Se conecto un cliente a kernel
+[WARNING] 19:10:21:051 Kernel/(7486:7486): Operacion desconocida.
+
+[INFO] 19:21:36:891 Kernel/(7486:7486): Se conecto un cliente a kernel
+[WARNING] 19:21:36:894 Kernel/(7486:7486): Operacion desconocida.
+
+[INFO] 19:34:24:116 Kernel/(7486:7486): Se conecto un cliente a kernel
+[ERROR] 19:36:12:342 Kernel/(7486:7486): Fallo la comunicacion.
+
+[INFO] 19:37:44:005 Kernel/(8440:8440): Kernel listo para recibir al cliente.
+
+[INFO] 19:38:27:694 Kernel/(8440:8440): Se conecto un cliente a kernel
+[INFO] 19:38:27:698 Kernel/(8440:8440): Recibi un paquete de consola.
+
+[INFO] 19:39:04:291 Kernel/(8440:8440): Se conecto un cliente a kernel
+[WARNING] 19:39:04:294 Kernel/(8440:8440): Operacion desconocida.
+
+[INFO] 19:45:03:808 Kernel/(8978:8978): Kernel listo para recibir al cliente.
+
+[INFO] 19:52:49:667 Kernel/(8978:8978): Se conecto un cliente a kernel
+[WARNING] 19:52:49:670 Kernel/(8978:8978): Operacion desconocida.
+
+[INFO] 19:55:03:942 Kernel/(8978:8978): Se conecto un cliente a kernel
+[WARNING] 19:55:03:944 Kernel/(8978:8978): Operacion desconocida.
+
+[INFO] 20:02:09:641 Kernel/(8978:8978): Se conecto un cliente a kernel
+[WARNING] 20:02:09:647 Kernel/(8978:8978): Operacion desconocida.
+
+[INFO] 20:07:19:403 Kernel/(8978:8978): Se conecto un cliente a kernel
+[WARNING] 20:07:19:404 Kernel/(8978:8978): Operacion desconocida.
+
+[INFO] 20:08:18:430 Kernel/(8978:8978): Se conecto un cliente a kernel
+[WARNING] 20:08:18:432 Kernel/(8978:8978): Operacion desconocida.
+

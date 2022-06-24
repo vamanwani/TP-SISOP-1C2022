@@ -10,11 +10,11 @@
 // OPERACION
 
 int recibir_operacion(int socket_cliente) {
-   int cod_op;
-    if(recv(socket_cliente, &cod_op, sizeof(uint8_t), MSG_WAITALL) != 0)
+   int cod_op = 0;
+    if(recv(socket_cliente, &cod_op, sizeof(uint8_t), MSG_WAITALL) != 0){
         return cod_op;
-    else
-    {
+    	printf("\nEl op code es: %d\n", cod_op);
+    } else {
         close(socket_cliente);
         return -1;
     }
@@ -151,7 +151,7 @@ t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
 
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
-    //agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t)); // Para que no se envie el valor del tamanio del stream size
+    agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t)); // Para que no se envie el valor del tamanio del stream size
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
@@ -198,6 +198,11 @@ t_list *recibir_paquete(int socket_cliente)
         desplazamiento += tamanio;
         list_add(valores, valor);
     }
+    printf("Valores de recibir paquete");
+	for (int i = 0 ; i < valores->elements_count; i++){
+		void* dato = list_get(valores,i);
+		printf("%d\n",dato);
+	}
     free(stream);
     return valores;
 }
@@ -205,18 +210,29 @@ t_list *recibir_paquete(int socket_cliente)
 // Recibir paquete como paquete 
 
 t_paquete* recibe_paquete(int socket){
+	printf("\nAdentro de recibe paquete\n");
 	int size;
 	void *stream;
 
 	op_code codigo=recibir_operacion(socket);
+//	printf("\nRecibi el op code: %d\n", codigo);
+
 	t_paquete* paquete=crear_paquete_con_codigo_de_operacion(codigo);
+	//printf("\nCree el paquete con el op code\n");
 
-	stream = recibir_stream(&size, socket);
+//	stream = recibir_stream(&size, socket);
+//	printf("\nRecibi el stream\n");
+//
+//	paquete->buffer->stream_size = size;
+//	paquete->buffer->stream = stream;
+//	printf("\nAsigne los valores al buffer\n");
+//	printf("\nHago los memcopy");
+//	memcpy(&paquete->buffer->stream_size, &size, sizeof(int));
+//	printf("\nPrimer memcopy hecho\n");
+//	memcpy(paquete->buffer->stream, stream, paquete->buffer->stream_size);
+//	printf("\nSegundo memcopy\n");
 
-	memcpy(&paquete->buffer->stream_size, stream, sizeof(int));
-	memcpy(paquete->buffer->stream, stream + sizeof(int), paquete->buffer->stream_size);
-
-	free(stream);
+//	free(stream);
 	return paquete;
 
 }
@@ -429,34 +445,41 @@ void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 ///----------------------------------ATENDER CLIENTES ----------------------------------
 
 int atender_clientes(int socket_servidor, void (*manejo_conexiones)(t_paquete *,int)) {
-	int socket_cliente ;
+	printf("Me meto a atender clienter \n");
+	int socket_cliente;
     while(true) {
-    	 socket_cliente = esperar_cliente(socket_servidor);
+    	printf("Me meto al while de atender clientes\n");
+    	socket_cliente = esperar_cliente(socket_servidor);
+    	printf("Recibi el socket del cliente\n");
         if(socket_cliente == -1) {
         	break;
         }
+        printf("Socket != a -1\n");
         pthread_t th_cliente;
+        printf("Creo el scoket conexion\n");
         t_socket *conexion = crear_socket_conexion(socket_cliente, manejo_conexiones);
 
 	    pthread_create(&th_cliente, NULL, (void *)ejecutar_instruccion, conexion);
 	    pthread_detach(th_cliente);
     }
-
     return socket_cliente;
 }
 
 // Para recibir paquete y usarlo al procesar las conexiones
 
 void ejecutar_instruccion(t_socket *conexion) {
-	t_paquete *paquete;
+	printf("\nMe meto a ejecutar instruccion\n");
+	t_paquete *paquete = crear_paquete();
 	int socket=conexion->socket;
 
 	while(true) {
-		paquete = recibe_paquete(socket);
+		printf("\nAdentro del while de ejecutar instruccion\n");
+		paquete->codigo_operacion = recibir_operacion(socket);
+		printf("\nRecibi el paquete con op code: %d\n", paquete->codigo_operacion);
 		if(socket == -1) {
 	    	break;
 	    }
-	    conexion->manejo_conexiones(paquete,socket);
+	    //conexion->manejo_conexiones(paquete,socket);
 	    eliminar_paquete(paquete);
 	}
 

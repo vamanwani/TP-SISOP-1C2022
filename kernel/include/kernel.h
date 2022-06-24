@@ -45,4 +45,6 @@ t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );
 void manejo_conexiones(t_paquete* ,int);
 
+void manejar_conexion(int);
+int atender_clientes1(int);
 #endif 

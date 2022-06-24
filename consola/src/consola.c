@@ -1,5 +1,3 @@
-
-
 #include "consola.h"
 
 
@@ -166,4 +164,3 @@ char *leer_archivo(char *unPath)
     printf("\nSe ha leido el archivo de pseudocodigo correctamente.\n");
     return cadena;
 }
-

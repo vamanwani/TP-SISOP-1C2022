@@ -18,10 +18,10 @@ int main(void)
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
     //PROBANDO MONOHILO FUNCIONA FENOMENO
-//    int socket_cliente = esperar_cliente(server_fd);
-//    manejar_conexion(socket_cliente);
+    int socket_cliente = esperar_cliente(server_fd);
+    manejar_conexion(socket_cliente);
 
-    while(atender_clientes1(server_fd));
+//    while(atender_clientes1(server_fd));
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
@@ -103,6 +103,7 @@ void cargar_configuracion(char* path) {
             consola = deserializar_consola(socket_kernel);
             log_info(logger, "PCB listo para armar\n");
             pcb* pcb = crear_estructura_pcb(consola);
+            //meter pcb a new
             log_info(logger, "PCB creado\n");
     		break;
     	case PAQUETE:
@@ -216,11 +217,11 @@ t_consola *deserializar_consola(int  socket_cliente) {
 int atender_clientes1(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
-	printf("Socket cliente: %d\n", socket_cliente);
+//	printf("Socket cliente: %d\n", socket_cliente);
 
 	while(true){
 		pthread_t hilo_cliente;
-		printf("Creo el hilo\n");
+//		printf("Creo el hilo\n");
 		pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
 		pthread_detach(hilo_cliente);
 		return 1;

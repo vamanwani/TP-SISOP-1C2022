@@ -166,9 +166,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 
   	t_consola *consola = malloc(sizeof(t_consola));
-
+  	consola->tamanio_proceso = *(uint32_t *)list_get(datos, 0);
   	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos) - 1);
-  	consola->tamanio_proceso = *(uint32_t *)list_get(datos, list_size(datos) - 1);
+
   	printf("Tamanio de proceso en cosola: %d", *(int *) consola->tamanio_proceso);
   	printf("Datos de consola, tamanio proceso: %d",consola->tamanio_proceso);
   	printf("Datos de consola, cantidad de instr en la lista: %d", consola->instrucciones->elements_count);

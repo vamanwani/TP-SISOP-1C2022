@@ -73,8 +73,6 @@ int esperar_cliente(int socket_servidor) {
 
 	int socket_cliente = accept(socket_servidor, (struct sockaddr *) &dir_cliente, &tam_direccion);
 
-	printf("\Recibi al cliente\n");
-
 	if(socket_cliente == -1)
 		return -1;
 

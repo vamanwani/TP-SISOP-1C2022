@@ -199,10 +199,10 @@ t_list *recibir_paquete(int socket_cliente)
         list_add(valores, valor);
     }
     printf("Valores de recibir paquete");
-	for (int i = 0 ; i < valores->elements_count; i++){
-		void* dato = list_get(valores,i);
-		printf("%d\n",dato);
-	}
+//	for (int i = 0 ; i < valores->elements_count; i++){
+//		void* dato = list_get(valores,i);
+//		printf("%d\n",dato);
+//	}
     free(stream);
     return valores;
 }

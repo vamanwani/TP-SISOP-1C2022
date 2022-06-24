@@ -17,10 +17,11 @@ int main(void)
     int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
-    int socket_cliente = esperar_cliente(server_fd);
-    manejar_conexion(socket_cliente);
+    //PROBANDO MONOHILO FUNCIONA FENOMENO
+//    int socket_cliente = esperar_cliente(server_fd);
+//    manejar_conexion(socket_cliente);
 
-//    while(atender_clientes1(server_fd));
+    while(atender_clientes1(server_fd));
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
@@ -127,11 +128,12 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
 
   	for(int i = 0; i < longitud_datos; i += 3) {
   		instruccion *instruccion = malloc(sizeof(instruccion));
-  		printf("Op code: %d, Primer param: %d , Segundo param: %d\n",*(codigo_instrucciones *)list_get(datos,i), *(uint32_t *)list_get(datos,i+1), *(uint32_t *)list_get(datos,i+2));
+  		//printf("Op code: %d, Primer param: %d , Segundo param: %d\n",*(codigo_instrucciones *)list_get(datos,i), *(uint32_t *)list_get(datos,i+1), *(uint32_t *)list_get(datos,i+2));
   		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
   		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
   		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
   		list_add(instrucciones, instruccion);
+  		printf("Instruccion numero [%d]: Cod operacion es: %d, 1erParam: %d, 2doParam: %d\n", i/3, *(codigo_instrucciones *)list_get(datos,i), *(uint32_t *)list_get(datos,i+1), *(uint32_t *)list_get(datos,i+2));
   	}
   	return instrucciones;
 }
@@ -152,9 +154,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 	printf("Tamanio de lista recibida: %d\n", list_size(datos));
 
-    for(int i=0 ; i<datos->elements_count;i++){
-    	printf("Dato numero '%d': %p \n",i,list_get(datos,i));
-    }
+//    for(int i=0 ; i<datos->elements_count;i++){
+//    	printf("Dato numero '%d': %p \n",i,list_get(datos,i));
+//    }
 
 
 //	void* stream = malloc(tamanio_stream);
@@ -163,16 +165,12 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //  	printf("Cantidad de datos deberia ser igual a 6, es: %d", datos->elements_count);
 
 	printf("Recibi el stream con los datos\n");
-
-
   	t_consola *consola = malloc(sizeof(t_consola));
-  	consola->tamanio_proceso = *(uint32_t *)list_get(datos, 0);
-  	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos) - 1);
-
-  	printf("Tamanio de proceso en cosola: %d", *(int *) consola->tamanio_proceso);
-  	printf("Datos de consola, tamanio proceso: %d",consola->tamanio_proceso);
-  	printf("Datos de consola, cantidad de instr en la lista: %d", consola->instrucciones->elements_count);
-  	list_destroy_and_destroy_elements(datos, free);
+  	consola->tamanio_proceso = *(uint32_t *)list_remove(datos, 0);
+//  	printf("Tamanio de proceso en cosola: %d", *(int *) consola->tamanio_proceso);
+  	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
+//  	printf("Datos de consola, cantidad de instr en la lista: %d", consola->instrucciones->elements_count);
+//  	list_destroy_and_destroy_elements(datos, free);
   	return consola;
 }
 
@@ -193,6 +191,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	case PAQUETE_CONSOLA:
 	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
+	  		pcb* proceso = crear_estructura_pcb(consola);
+	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion");
+	  		//agregarANewPcb(proceso);
 	  //        log_info(logger, "PCB listo para armar\n");
 	  //        pcb* pcb = crear_estructura_pcb(consola);
 	  //        log_info(logger, "PCB creado\n");
@@ -215,12 +216,11 @@ t_consola *deserializar_consola(int  socket_cliente) {
 int atender_clientes1(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
-	printf("\nSocket cliente: %d\n", socket_cliente);
+	printf("Socket cliente: %d\n", socket_cliente);
 
 	while(true){
 		pthread_t hilo_cliente;
-		printf("\nCreo el hilo\n");
-		printf("\nSocket cliente: %d\n", socket_cliente);
+		printf("Creo el hilo\n");
 		pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
 		pthread_detach(hilo_cliente);
 		return 1;

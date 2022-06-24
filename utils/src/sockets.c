@@ -67,7 +67,7 @@ int iniciar_servidor(char *ip, char *puerto)
 }
 
 int esperar_cliente(int socket_servidor) {
-	printf("\nAdentro de esperar cliente\n");
+	printf("Adentro de esperar cliente\n");
 	struct sockaddr_in dir_cliente;
 	socklen_t tam_direccion = sizeof(struct sockaddr_in);
 

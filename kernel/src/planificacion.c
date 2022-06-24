@@ -8,17 +8,20 @@ uint32_t tiempoInicioBlock;
 // CREAR PCB
 
 pcb *crear_estructura_pcb(t_consola *consola) {
+	printf("Entro a crear estructura pcb \n");
 	pcb *pcb = malloc(sizeof(pcb));
-
-	pthread_mutex_lock(&mutex_generador_id);
-	pcb->id_proceso = generador_de_id;
-	generador_de_id++;
-	pthread_mutex_unlock(&mutex_generador_id);
-	pcb->tamanio_proceso =consola->tamanio_proceso;
+//	pthread_mutex_lock(&mutex_generador_id);
+	pcb->id_proceso = 0;
+//	generador_de_id++;
+//	pthread_mutex_unlock(&mutex_generador_id);
+	pcb->tamanio_proceso = consola->tamanio_proceso;
 	pcb->instrucciones = list_duplicate(consola->instrucciones);
 	pcb->program_counter = 0;
 	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
 	pcb->tiempo_de_bloqueo = 0;
+	pcb->valor_tabla_paginas = 69;
+	pcb->rafaga_anterior = 1;
+	pcb->estado_proceso = NUEVO;
 
 	return pcb;
 }
